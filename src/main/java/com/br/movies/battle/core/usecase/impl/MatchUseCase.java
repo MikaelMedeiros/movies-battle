@@ -14,9 +14,13 @@ public class MatchUseCase implements IMatchUseCase {
     private final IRoundUseCase roundUseCase;
 
     @Override
-    public Match startMatch(Player player) {
+    public Match startMatch(Integer idPlayer) {
+        var playerFound = playerUseCase.findPlayer(idPlayer);
+        var generatedRounds = roundUseCase.generateRounds();
         return Match.builder()
                 .id(1)
+                .player(playerFound)
+                .rounds(generatedRounds)
                 .build();
     }
 }

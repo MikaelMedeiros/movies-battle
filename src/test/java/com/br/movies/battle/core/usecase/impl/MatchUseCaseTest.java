@@ -16,6 +16,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
+import static java.util.List.of;
+import static org.mockito.Mockito.when;
+
 
 @ExtendWith(MockitoExtension.class)
 class MatchUseCaseTest {
@@ -31,39 +34,58 @@ class MatchUseCaseTest {
 
     @Test
     void shouldStartMatch() {
-
-        var player = Player.builder()
-                .id(1)
-                .name("Alberto")
-                .build();
-
-        var matchStarted = useCase.startMatch(player);
+        var matchStarted = useCase.startMatch(1);
 
         Assertions.assertNotNull(matchStarted);
+    }
+
+    @Test
+    void shouldStartMatchWithPlayer() {
+        when(playerUseCase.findPlayer(1)).thenReturn(generatePlayer());
+
+        var matchStarted = useCase.startMatch(1);
+        Assertions.assertNotNull(matchStarted.getPlayer());
+    }
+
+    @Test
+    void shouldStartMatchWithRounds() {
+        when(roundUseCase.generateRounds()).thenReturn(generateRounds());
+
+        var matchStarted = useCase.startMatch(1);
+        Assertions.assertNotNull(matchStarted.getRounds());
     }
 
     public Match getMockMatch(Integer id) {
         return  Match.builder()
                 .id(id)
                 .rounds(
-                        List.of(
-                                Round.builder()
-                                        .id(id)
-                                        .movies(generateTwoMovies())
-                                        .build()
-                        )
+                        generateRounds()
                 )
                 .player(
-                        Player.builder()
-                                .id(id)
-                                .name("Teste")
-                                .build()
+                        generatePlayer()
                 )
                 .build();
     }
 
+    public List<Round> generateRounds() {
+        return of (
+                Round.builder()
+                        .id(1)
+                        .movies(generateTwoMovies())
+                        .build()
+        );
+    }
+
+    public Player generatePlayer() {
+        return Player.builder()
+                .id(1)
+                .name("Alberto")
+                .login("anselmo.lesmo")
+                .build();
+    }
+
     public List<Movie> generateTwoMovies() {
-        return List.of(
+        return of (
                 new Movie("tt3896198", "Guardians of the Galaxy Vol. 2", 7.6f, 641226),
                 new Movie("tt3899198", "Inazuma Japan's Final Battle!", 0.0f, 0)
         );

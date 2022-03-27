@@ -2,6 +2,7 @@ package com.br.movies.battle.core.domain;
 
 import com.br.movies.battle.core.exeption.MatchException;
 import lombok.Builder;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,8 @@ import java.util.Objects;
 public class Round {
 
     private Integer id;
+
+    @Getter
     private List<Movie> movies;
 
     private final List<String> words = List.of("Batman", "Avenger", "Banana",  "Alice", "Iron", "Car", "Guardians");

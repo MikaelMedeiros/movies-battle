@@ -15,8 +15,9 @@ public class MatchGateway implements MatchPortOut {
     private final MatchRepository repository;
 
     @Override
-    public void save(Match match) {
+    public Match save(Match match) {
         var entity = mapper.matchDomainToEntity(match);
-        repository.save(entity);
+        var matchSaved = repository.save(entity);
+        return mapper.matchEntityToDomain(matchSaved);
     }
 }

@@ -19,11 +19,12 @@ public class MatchEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "PLAYER_ID", referencedColumnName = "id")
     private PlayerEntity player;
 
-    @OneToMany(mappedBy = "match")
+    @OneToMany
+    @JoinColumn(name = "ROUND_ID", referencedColumnName = "id")
     private List<RoundEntity> rounds;
 
 }

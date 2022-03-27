@@ -2,13 +2,21 @@ package com.br.movies.battle.core.usecase.impl;
 
 import com.br.movies.battle.core.domain.Movie;
 import com.br.movies.battle.core.domain.Round;
+import com.br.movies.battle.core.port.RoundPortOut;
+import com.br.movies.battle.core.usecase.IMovieUseCase;
 import com.br.movies.battle.core.usecase.IRoundUseCase;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class RoundUseCase implements IRoundUseCase {
+
+    private final RoundPortOut portOut;
+    private final IMovieUseCase movieUseCase;
+
     @Override
     public List<Round> generateRounds() {
         return

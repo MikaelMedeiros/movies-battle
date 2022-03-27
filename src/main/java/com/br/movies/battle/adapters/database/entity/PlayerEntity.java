@@ -14,6 +14,15 @@ public class PlayerEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToOne(mappedBy = "player")
+    @Column(name = "NAME")
+    private String name;
+
+    @Column(name = "SCORE")
+    private Integer score;
+
+    @OneToMany
     private MatchEntity match;
+
+    @Column(name = "AUTHENTICATED")
+    private Boolean authenticated;
 }

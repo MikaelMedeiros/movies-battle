@@ -1,7 +1,6 @@
 package com.br.movies.battle.core.usecase.impl;
 
 import com.br.movies.battle.core.domain.Match;
-import com.br.movies.battle.core.domain.Player;
 import com.br.movies.battle.core.port.MatchPortOut;
 import com.br.movies.battle.core.usecase.IMatchUseCase;
 import com.br.movies.battle.core.usecase.IPlayerUseCase;
@@ -19,11 +18,13 @@ public class MatchUseCase implements IMatchUseCase {
     public Match startMatch(Integer idPlayer) {
         var playerFound = playerUseCase.findPlayer(idPlayer);
         var generatedRounds = roundUseCase.generateRounds();
-
-        return Match.builder()
+        var match = Match.builder()
                 .id(1)
                 .player(playerFound)
                 .rounds(generatedRounds)
                 .build();
+
+       return matchPortOut.save(match);
+
     }
 }

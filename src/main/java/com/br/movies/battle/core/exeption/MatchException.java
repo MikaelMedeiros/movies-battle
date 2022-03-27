@@ -1,4 +1,4 @@
-package com.br.movies.battle.core.exeptions;
+package com.br.movies.battle.core.exeption;
 
 public class MatchException extends RuntimeException {
 

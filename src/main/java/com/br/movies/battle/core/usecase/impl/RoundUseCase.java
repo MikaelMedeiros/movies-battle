@@ -3,9 +3,11 @@ package com.br.movies.battle.core.usecase.impl;
 import com.br.movies.battle.core.domain.Movie;
 import com.br.movies.battle.core.domain.Round;
 import com.br.movies.battle.core.usecase.IRoundUseCase;
+import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+@AllArgsConstructor
 public class RoundUseCase implements IRoundUseCase {
     @Override
     public List<Round> generateRounds() {

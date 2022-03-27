@@ -4,7 +4,6 @@ import com.br.movies.battle.core.domain.Match;
 import com.br.movies.battle.core.domain.Movie;
 import com.br.movies.battle.core.domain.Player;
 import com.br.movies.battle.core.domain.Round;
-import com.br.movies.battle.core.usecase.IMatchUseCase;
 import com.br.movies.battle.core.usecase.IPlayerUseCase;
 import com.br.movies.battle.core.usecase.IRoundUseCase;
 import org.junit.jupiter.api.Assertions;

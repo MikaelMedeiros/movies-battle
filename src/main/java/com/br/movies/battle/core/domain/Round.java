@@ -1,6 +1,6 @@
 package com.br.movies.battle.core.domain;
 
-import com.br.movies.battle.core.exeptions.MatchException;
+import com.br.movies.battle.core.exeption.MatchException;
 import lombok.Builder;
 
 import java.util.ArrayList;
